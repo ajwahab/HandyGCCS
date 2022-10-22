@@ -36,7 +36,7 @@ def capture_system():
     for device in devices:
         
         # Xbox 360 Controller
-        if device.name in ['Microsoft X-Box 360 pad', 'Generic X-Box pad'] and device.phys in ['usb-0000:03:00.3-4/input0', 'usb-0000:00:14.0-9/input0']:
+        if device.name in ['Microsoft X-Box 360 pad', 'Generic X-Box pad'] and device.phys in ['usb-0000:03:00.3-4/input0', 'usb-0000:00:14.0-9/input0', 'usb-0000:04:00.3-4/input0']:
             xb_path = device.path
 
         # Keyboard Device
