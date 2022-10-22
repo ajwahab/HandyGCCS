@@ -321,6 +321,7 @@ def id_system():
             "ONEXPLAYER mini GT72",
             "ONEXPLAYER GUNDAM GA72",
             "ONEXPLAYER 2 ARP23",
+            "AOKZOE A1 AR07",
             ]:
 
             system_type = "OXP"
