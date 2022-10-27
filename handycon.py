@@ -878,7 +878,7 @@ async def emit_events(events: list):
         for event in events:
             ui_device.write_event(event)
             ui_device.syn()
-            await asyncio.sleep(0.09)
+            await asyncio.sleep(0.07)
 
 # Gracefull shutdown.
 async def restore_all(loop):
