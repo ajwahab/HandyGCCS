@@ -1,0 +1,63 @@
+version: 0.0
+compat: ['G1619-04',]
+system:
+  detect_delay: 0.25
+  user: ''
+  config_path: ''
+devices:
+  controller:
+    class: 'Controller'
+    name: ['Microsoft X-Box 360 pad',]
+    phys: ['usb-0000:e4:00.3-4/input0',]
+    events:
+  gyro:
+    class: 'Gyro'
+    driver:
+      module: 'BMI160_i2c.Driver'
+      init_args:
+        bus: 2
+        addr: 0x69
+      ang_vel:
+        x: {'method': getRotationX, 'index': 0}
+        y: {'method': getRotationX, 'index': 0}
+    sensitivity: 20
+  keyboard:
+    class: 'Keyboard'
+    path:
+    name: '  Mouse for Windows'
+    phys: 'usb-0000:74:00.3-4/input1'
+    events: # TODO add event codes, triggers, actions
+  powerkey:
+    class: 'PowerKey'
+    name: 'Power Button'
+    phys: 'LNXPWRBN/button/input0'
+    events: # TODO add event codes, triggers, actions
+      - {'type': 'EV_KEY', 'codes': [KEY_POWER,], 'values': {0: handle_power}}
+  ff:
+    class: 'ForceFeedback'
+virtcon:
+  class: VirtCon
+  uinput:
+    events: 'constants.CONTROLLER_EVENTS'
+    name: 'Handheld Controller'
+    bustype: 0x3
+    vendor: 0x045e
+    product: 0x028e
+    version: 0x110
+  button_delay: 0.09
+  ff_delay: 0.2
+  buttons:  # maps buttons to event constants
+    button1: 'constants.EVENT_SCR'
+    button2: 'constants.EVENT_QAM'
+    button3: 'constants.EVENT_ESC'
+    button4: 'constants.EVENT_OSK'
+    button5: 'constants.EVENT_HOME'
+  events:
+    toggle_gyro:
+      trigger: button3
+      ecodes: ['KEY_0',]
+      action: gyro.toggle
+    qam:
+      trigger: button2
+      ecodes: ['KEY_9',]
+      action: this_button
